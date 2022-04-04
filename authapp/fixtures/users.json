@@ -1,0 +1,23 @@
+[
+  {
+    "first_name": "Иван",
+    "last_name": "Иванов",
+    "username": "user1",
+    "email": "user1@service.local",
+    "password": "geekbrains"
+  },
+  {
+    "first_name": "Петров",
+    "last_name": "Игорь",
+    "username": "user2",
+    "email": "user2@service.local",
+    "password": "geekbrains"
+  },
+  {
+    "first_name": "Ахметова",
+    "last_name": "Ирина",
+    "username": "user3",
+    "email": "user3@service.local",
+    "password": "geekbrains"
+  }
+]
