@@ -3,8 +3,8 @@ import axios from 'axios';
 // import logo from './logo.svg';
 import './App.css';
 import MainMenu from './components/MainMenu.js';
-import UserList from './components/User.js';
-// import AuthorList from "./components/Author";
+//import UserList from './components/User.js';
+import AuthorList from "./components/Author";
 import Footer from './components/Footer.js';
 
 class App extends React.Component {
@@ -32,12 +32,12 @@ class App extends React.Component {
        // this.setState({
        //                'authors': authors
        //             })
-        axios.get('http://127.0.0.1:8000/api/users/')
+        axios.get('http://127.0.0.1:8000/api/authors/')
             .then(response => {
-                const users = response.data
+                const authors = response.data
                 this.setState(
                             {
-                               'users': users
+                               'authors': authors
                             }
                 )
             }).catch(error => console.log(error))
@@ -47,8 +47,8 @@ class App extends React.Component {
         return (
             <div>
                 <MainMenu />
-                <UserList users={this.state.users} />
-                {/*<AuthorList authors={this.state.authors} />*/}
+                {/*<UserList users={this.state.users} />*/}
+                <AuthorList authors={this.state.authors} />
                 <Footer />
             </div>
         )

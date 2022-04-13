@@ -23,5 +23,3 @@ class Article:
     def __init__(self, name, author):
         self.name = name
         self.author = author
-
-
