@@ -4,7 +4,6 @@ import axios from 'axios';
 import './App.css';
 import MainMenu from './components/MainMenu.js';
 import UserList from './components/User.js';
-// import AuthorList from "./components/Author";
 import Footer from './components/Footer.js';
 
 class App extends React.Component {
@@ -16,22 +15,6 @@ class App extends React.Component {
         }
     }
     componentDidMount() {
-
-       // const authors = [
-       //     {
-       //        'first_name': 'Фёдор',
-       //        'last_name': 'Достоевский',
-       //        'birthday_year': 1821
-       //     },
-       //     {
-       //        'first_name': 'Пушкин',
-       //        'last_name': 'Александр',
-       //        'birthday_year': 1820
-       //     },
-       //     ]
-       // this.setState({
-       //                'authors': authors
-       //             })
         axios.get('http://127.0.0.1:8000/api/users/')
             .then(response => {
                 const users = response.data
@@ -48,7 +31,6 @@ class App extends React.Component {
             <div>
                 <MainMenu />
                 <UserList users={this.state.users} />
-                {/*<AuthorList authors={this.state.authors} />*/}
                 <Footer />
             </div>
         )
