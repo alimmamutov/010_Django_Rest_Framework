@@ -7,7 +7,7 @@ from django.contrib.auth.models import AbstractUser
 
 class User(AbstractUser):
     email = models.EmailField(verbose_name='email', unique=True, db_index=True)
-    # pk = models.UUIDField(primary_key=True, default=uuid4)
+    id = models.UUIDField(primary_key=True, default=uuid4)
 
     def __str__(self):
         return f'{self.username} {self.first_name} {self.last_name}'

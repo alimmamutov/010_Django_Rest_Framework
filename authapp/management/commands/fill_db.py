@@ -31,8 +31,7 @@ class Command(BaseCommand):
         # Add projects
         projects = load_from_json('authapp/fixtures/projects.json')
         for project in projects:
-            proj = project.get('fields')
-            # current_user = User.objects.get(id=proj.get('user'))
-            # prod['user'] = current_user
-            new_proj = Project(**proj)
+            user_list = list(User.objects.exclude(username='django'))
+            new_proj = Project(**project)
             new_proj.save()
+            new_proj.users.add(*user_list)

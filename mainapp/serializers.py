@@ -4,10 +4,11 @@ from mainapp.models import Project
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
-    users = StringRelatedField(many=True)
+    # users = StringRelatedField(many=True)
     # users = PrimaryKeyRelatedField
-    # id = PrimaryKeyRelatedField()
+    uid = StringRelatedField(many=False)
+    users = UserModelSerializer
 
     class Meta:
         model = Project
-        fields = ['id', 'name', 'repository', 'users']
+        fields = ['uid', 'name', 'repository', 'users']
