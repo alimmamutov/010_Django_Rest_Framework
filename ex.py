@@ -4,7 +4,7 @@ class Author:
         self.birthday_year = birthday_year
 
     def __str__(self):
-        return self.name
+        return f'Объект класса Author "{self.name}" - {self.birthday_year} г.р.'
 
 
 class Biography:
