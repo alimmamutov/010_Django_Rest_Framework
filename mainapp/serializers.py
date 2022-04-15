@@ -1,6 +1,6 @@
 from rest_framework.serializers import ModelSerializer, StringRelatedField, PrimaryKeyRelatedField,HyperlinkedModelSerializer
 from authapp.serializers import UserModelSerializer
-from mainapp.models import Project
+from mainapp.models import Project, ToDo
 
 
 class ProjectModelSerializer(HyperlinkedModelSerializer):
@@ -12,3 +12,12 @@ class ProjectModelSerializer(HyperlinkedModelSerializer):
     class Meta:
         model = Project
         fields = ['uid', 'name', 'repository', 'users']
+
+
+class ToDoModelSerializer(HyperlinkedModelSerializer):
+    user = UserModelSerializer
+    project = ProjectModelSerializer
+
+    class Meta:
+        model = ToDo
+        fields = '__all__'

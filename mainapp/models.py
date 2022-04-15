@@ -14,3 +14,18 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ToDo(models.Model):
+    ACTIVE = 'A'
+    CLOSED = 'C'
+    STATUS_CHOICES = (
+        (ACTIVE, 'Активная'),
+        (CLOSED, 'Закрытая')
+    )
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, verbose_name='Проект')
+    text = models.TextField(verbose_name='Текст заметки')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+    status = models.CharField(choices=STATUS_CHOICES, max_length=2, default=ACTIVE, verbose_name='Статус заметки')
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    updated_at = models.DateTimeField(auto_now=True, verbose_name='Дата обновления')
