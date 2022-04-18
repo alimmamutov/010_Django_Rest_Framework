@@ -19,9 +19,18 @@ class Biography(models.Model):
 
 class Book(models.Model):
     name = models.CharField(max_length=32)
-    authors = models.ManyToManyField(Author)
+    authors = models.ManyToManyField(
+        Author,
+        related_name='books',
+        related_query_name='book'
+    )
 
 
 class Article(models.Model):
     name = models.CharField(max_length=32)
-    author = models.ForeignKey(Author, models.PROTECT)
+    author = models.ForeignKey(
+        Author,
+        on_delete=models.PROTECT,
+        related_name='article',
+        related_query_name='article'
+    )
