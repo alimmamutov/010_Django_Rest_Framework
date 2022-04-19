@@ -18,15 +18,20 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from authors.views import AuthorModelViewSet, BiographyModelViewSet, BookModelViewSet, ArticleModelViewSet
 from authapp.views import UserModelViewSet
+from mainapp.views import ArticleAPIVIew, article_view
 
 router = DefaultRouter()
-router.register('authors', AuthorModelViewSet)
-router.register('biography', BiographyModelViewSet)
-router.register('articles', ArticleModelViewSet)
-router.register('books', BookModelViewSet)
+# router.register('authors', AuthorModelViewSet)
+# router.register('biography', BiographyModelViewSet)
+# router.register('articles', ArticleModelViewSet)
+# router.register('books', BookModelViewSet)
+# router.register('article_class_view', ArticleAPIVIew)
+# router.register('article_func_view', article_view)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/', include(router.urls)),
+    path('views/api-view-class/', ArticleAPIVIew.as_view()),
+    path('views/api-view-func/', article_view),
 ]
