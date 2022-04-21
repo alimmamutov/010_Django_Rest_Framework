@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from authors.views import AuthorModelViewSet, BiographyModelViewSet, BookModelViewSet, ArticleModelViewSet
+from authors.views import AuthorModelViewSet, BiographyModelViewSet, BookModelViewSet, ArticleModelViewSet, AuthorViewSimpleResp, AuthorViewSerResp
 from authapp.views import UserModelViewSet
 from mainapp.views import ArticleAPIVIew, article_view
 
@@ -34,4 +34,6 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('views/api-view-class/', ArticleAPIVIew.as_view()),
     path('views/api-view-func/', article_view),
+    path('views/testview_simple_response', AuthorViewSimpleResp.as_view()),
+    path('views/testview_ser_response', AuthorViewSerResp.as_view()),
 ]
