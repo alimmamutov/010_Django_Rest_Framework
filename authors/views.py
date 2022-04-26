@@ -1,3 +1,4 @@
+from rest_framework.generics import ListAPIView, CreateAPIView
 from rest_framework.renderers import AdminRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -44,3 +45,8 @@ class AuthorViewSerResp(APIView):
 
     def post(self, request):
         return Response('POST response!!!!')
+
+
+class AuthorListView(ListAPIView, CreateAPIView): # При множественном наследовании получается указать Доступные методы дженериков
+    queryset = Author.objects.all()
+    serializer_class = AuthorModelSerializer
