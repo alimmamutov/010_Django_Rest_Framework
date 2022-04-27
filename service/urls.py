@@ -28,6 +28,7 @@ router = DefaultRouter()
 # router.register('books', BookModelViewSet)
 # router.register('article_class_view', ArticleAPIVIew)
 # router.register('article_func_view', article_view)
+router.register('test', AuthorsViews.AuthorViewSet,basename='test')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
