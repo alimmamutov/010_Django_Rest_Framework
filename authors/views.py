@@ -1,9 +1,10 @@
+from rest_framework import mixins
 from rest_framework.decorators import action
 from rest_framework.generics import ListAPIView, CreateAPIView
-from rest_framework.renderers import AdminRenderer
+from rest_framework.renderers import AdminRenderer, JSONRenderer, BrowsableAPIRenderer
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from rest_framework.viewsets import ModelViewSet, ViewSet
+from rest_framework.viewsets import ModelViewSet, ViewSet, GenericViewSet
 from .models import Author, Biography, Book, Article
 from .serializers import AuthorModelSerializer, BiographySerializer, BookSerializer, ArticleSerializer
 
@@ -63,3 +64,9 @@ class AuthorViewSet(ViewSet):
     @action(detail=False, methods=['GET'])  # detail=False означает, что работаем с множеством объектов
     def change_password_ururu(self, request):
         return Response('My action')
+
+
+class AuthorCustomModelViewSet(mixins.CreateModelMixin, mixins.ListModelMixin, GenericViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorModelSerializer
+    renderer_classes = [JSONRenderer, BrowsableAPIRenderer]
