@@ -22,7 +22,7 @@ from authapp.views import UserModelViewSet
 from mainapp.views import ArticleAPIVIew, article_view
 
 router = DefaultRouter()
-# router.register('authors', AuthorModelViewSet)
+router.register('authors_model_viewset', AuthorModelViewSet)
 # router.register('biography', BiographyModelViewSet)
 # router.register('articles', ArticleModelViewSet)
 # router.register('books', BookModelViewSet)

@@ -13,6 +13,12 @@ class AuthorModelViewSet(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorModelSerializer
 
+    def get_queryset(self):  # фильтрация выборки
+        name = self.request.query_params['name']
+        headers = self.request.headers
+        return Author.objects.filter(first_name__contains=name)
+
+
 
 class BiographyModelViewSet(ModelViewSet):
     renderer_classes = [AdminRenderer]
