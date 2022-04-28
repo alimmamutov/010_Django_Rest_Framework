@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'corsheaders',
     'rest_framework',
+    'django_filters',
     'authors',
     'authapp',
     'mainapp',
@@ -134,9 +135,10 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
 ]
 
-# REST_FRAMEWORK = {
+REST_FRAMEWORK = {
 #     'DEFAULT_RENDERER_CLASSES': [
 #         'rest_framework.renderers.JSONRenderer',
 #         'rest_framework.renderers.AdminRenderer',
 #     ]
-# }
+    'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
+}
