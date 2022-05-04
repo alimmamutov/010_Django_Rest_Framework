@@ -12,11 +12,11 @@ from .serializers import AuthorModelSerializer, BiographySerializer, BookSeriali
 class AuthorModelViewSet(ModelViewSet):
     queryset = Author.objects.all()
     serializer_class = AuthorModelSerializer
-
-    def get_queryset(self):  # фильтрация выборки
-        name = self.request.query_params['name']
-        headers = self.request.headers
-        return Author.objects.filter(first_name__contains=name)
+    filterset_fields = ['first_name', 'last_name', 'birthday_year']
+    # def get_queryset(self):  # фильтрация выборки
+    #     name = self.request.query_params['name']
+    #     headers = self.request.headers
+    #     return Author.objects.filter(first_name__contains=name)
 
 
 
